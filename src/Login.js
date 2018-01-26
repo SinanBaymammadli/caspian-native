@@ -94,18 +94,21 @@ export default class Login extends React.Component {
                 keyboardType="numeric"
                 autoCapitalize="none"
                 returnKeyType="next"
+                blurOnSubmit={false}
+                onSubmitEditing={() => this.refs.PasswordInput._root.focus()}
               />
             </Item>
             <Item style={styles.item}>
               <Input
+                ref="PasswordInput"
                 onChangeText={password =>
                   this.setState({ data: { ...this.state.data, password } })
                 }
                 value={this.state.data.password}
                 placeholder="Password"
-                keyboardType="numeric"
                 secureTextEntry={true}
                 autoCapitalize="none"
+                onSubmitEditing={() => this.login()}
               />
             </Item>
             <Button full primary style={styles.button} onPress={this.login}>
